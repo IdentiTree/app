@@ -2,6 +2,11 @@
 Frontend Application Odyssey for the Hackathon
 
 
+DEMO: https://identitree-app.herokuapp.com/
+
+[Landingpage/Docs](https://identitree.github.io/app/) 
+
+
 ## Setup Local
 
 ### Backend
