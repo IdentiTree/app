@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Frontend Application Odyssey for the Hackathon",
+  "main": "mongo-init.js",
+  "scripts": {
+    "build-frontend": "cd ./frontend  && npm install && npm run build && cd ..",
+    "build-backend": "cd ./backend  && npm install && npm run build && cd ..",
+    "start-app": "./backend npm start",
+    "start": "npm run build-frontend && npm run build-frontend && npm run start-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdentiTree/app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IdentiTree/app/issues"
+  },
+  "homepage": "https://github.com/IdentiTree/app#readme"
+}
