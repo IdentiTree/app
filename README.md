@@ -17,12 +17,17 @@ cd backend
 cp .env.example .env
 ```
 
-
 3. Start Node.js app (in the `/backend` folder)
 ```bash
 npm install
 npm run build
-npm run serve
+npm run watch
+```
+
+4. Start React app (in the `/frontend` folder)
+```bash
+npm install
+npm run start
 ```
 
 
