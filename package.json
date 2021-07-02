@@ -6,8 +6,8 @@
   "scripts": {
     "build-frontend": "cd ./frontend  && npm install && npm run build && cd ..",
     "build-backend": "cd ./backend  && npm install && npm run build && cd ..",
-    "start-app": "./backend npm start",
-    "start": "npm run build-frontend && npm run build-frontend && npm run start-app"
+    "build": "npm run build-frontend && npm run build-frontend",
+    "start": "./backend npm start"
   },
   "repository": {
     "type": "git",
