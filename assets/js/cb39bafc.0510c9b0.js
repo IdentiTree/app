@@ -1,0 +1,1 @@
+(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[408],{4146:function(a){"use strict";a.exports=JSON.parse('{"allTagsPath":"/app/blog/tags","slug":"iota","name":"iota","count":1,"permalink":"/app/blog/tags/iota"}')}}]);

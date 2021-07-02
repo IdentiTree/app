@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>IdentiTree Blog</title>
+        <link>https://github.com/IdentiTree/docs/app/blog</link>
+        <description>IdentiTree Blog</description>
+        <lastBuildDate>Fri, 02 Jul 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Hello World]]></title>
+            <link>https://github.com/IdentiTree/docs/app/blog/hello_world</link>
+            <guid>hello_world</guid>
+            <pubDate>Fri, 02 Jul 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Hello world!]]></description>
+        </item>
+    </channel>
+</rss>

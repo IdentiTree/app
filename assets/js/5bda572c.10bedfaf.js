@@ -1,0 +1,1 @@
+(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[256],{7205:function(e){"use strict";e.exports=JSON.parse('{"allTagsPath":"/app/blog/tags","slug":"sovereignnature","name":"sovereignnature","count":1,"permalink":"/app/blog/tags/sovereignnature"}')}}]);
