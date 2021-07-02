@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Monorepo for team IdentiTree for the Odyssey Hackathon",
+  "main": "mongo-init.js",
+  "node": "14.16.x",
+  "scripts": {
+    "build-frontend": "cd ./frontend  && npm install && npm run build && cd ..",
+    "build-backend": "cd ./backend  && npm install && npm run build && cd ..",
+    "build": "npm run build-frontend && npm run build-backend",
+    "start": "./backend npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdentiTree/app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IdentiTree/app/issues"
+  },
+  "homepage": "https://github.com/IdentiTree/app#readme"
+}
