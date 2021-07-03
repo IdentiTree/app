@@ -19,7 +19,7 @@ docker-compose up -d
 2. Copy env file
 ```bash
 cd backend
-cp .env.example .env
+cp .env.example ~/src/.env
 ```
 
 
