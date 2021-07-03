@@ -1,5 +1,6 @@
 import errorHandler from "errorhandler";
 import app from "./app";
+import { agentInit } from "./controllers/agentControllers";
 
 
 /**
@@ -9,6 +10,13 @@ if (process.env.NODE_ENV === "development") {
     app.use(errorHandler());
 }
 
+/**
+ * Loads Application Agent 
+ */
+
+ agentInit().then((agent) => {
+     console.log("works!", agent)
+ })
 
 /**
  * Start Express server.
