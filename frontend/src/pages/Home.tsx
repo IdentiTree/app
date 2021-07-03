@@ -25,7 +25,7 @@ function Home() {
             [51.52, -0.12],
           ], options: { fillColor: 'lime' }}
         ]}
-        markers={[{position: [51.519, -0.10]}]}
+        markers={[{position: [51.519, -0.10], type: "quest"}, {position: [51.519, -0.11], type: "entity"}]}
         onPlace={(pos) => console.log(pos)}
         onMarkerSelect={(marker) => console.log(marker)}
       />
