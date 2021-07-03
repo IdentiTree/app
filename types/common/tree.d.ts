@@ -1,12 +1,12 @@
+import { Coordinate } from './Coordinate'
+
+
 // types/common/tree.d.ts
 // OPEN COUNCIL DATA STANDARDS: http://standards.opencouncildata.org/#/trees
 export interface Tree {
 
     // --- Required ---
-    // lat`: Latitude
-    lat: string;
-    // `lon`: longitude
-    lon: string;
+    coordinate: Coordinate,
 
     // --- Recommended ---
     // `genus`: Botanical genus, in title case. eg: Eucalyptus
