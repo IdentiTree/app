@@ -25,9 +25,12 @@
         "heroku-prebuild": "(cd ../frontend && npm install && npm run build && cd -)"
     },
     "dependencies": {
+        "@iota/identity-wasm": "^0.3.1",
+        "@types/bcryptjs": "^2.4.2",
         "@types/mongodb": "3.6.5",
         "async": "3.2.0",
         "bcrypt-nodejs": "0.0.3",
+        "bcryptjs": "^2.4.3",
         "bluebird": "3.7.2",
         "compression": "1.7.4",
         "connect-mongo": "4.4.0",
