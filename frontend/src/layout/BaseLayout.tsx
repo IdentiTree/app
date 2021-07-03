@@ -1,7 +1,7 @@
 import Navigation from '../components/Navigation'
 
 export interface BaseLayoutProps {
-  children: JSX.Element
+  children: JSX.Element[]
 }
 
 function BaseLayout(props: BaseLayoutProps) {
@@ -9,8 +9,8 @@ function BaseLayout(props: BaseLayoutProps) {
 
   return (
     <div>
-      <Navigation />
       {children}
+      <Navigation />
     </div>
   )
 }
