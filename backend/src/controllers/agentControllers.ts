@@ -16,9 +16,7 @@ const agentInit = async () => {
     } else {
         console.log("Creating agent...")
         const DID_Data = await createDID();
-        console.log("DID_Data", DID_Data)
         const encryptedPrivKey = encrypt(DID_Data.key.secret);
-        console.log("encryptedPrivKey", encryptedPrivKey)
         const newAgent: any = await Agent.create({
             name: "Application Agent",
             did: DID_Data.did,
