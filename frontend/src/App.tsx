@@ -1,14 +1,19 @@
-import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
+import { 
+  createMuiTheme, 
+  ThemeProvider, 
+  CssBaseline
+} from '@material-ui/core';
+
 import { theme } from './theme/theme';
-import Home from './pages/Home';
+import Router from './Router'
 
 const muiTheme = createMuiTheme(theme);
 
 function App() {
   return (
     <ThemeProvider theme={muiTheme}>
-      <Home />
       <CssBaseline />
+      <Router />
     </ThemeProvider>
   );
 }

@@ -1,5 +1,11 @@
+import BaseLayout from "../layout/BaseLayout"
+
 function Home() {
-  return <h1>Home</h1>
+  return (
+    <BaseLayout>
+      <h1>Home</h1>
+    </BaseLayout>
+  )
 }
 
 export default Home
