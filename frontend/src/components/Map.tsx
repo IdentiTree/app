@@ -3,6 +3,28 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { polygon as turfPolygon, area as turfArea } from '@turf/turf';
 import { MapContainer, TileLayer, Marker, Popup, Polygon, useMapEvents } from 'react-leaflet';
+import { icon } from "leaflet";
+
+
+const POSITION_ICON = icon({
+    iconUrl: "markers/position-marker.svg",
+    iconSize: [68, 68],
+});
+
+const ENTITY_ICON = icon({
+    iconUrl: "markers/entity-marker.svg",
+    iconSize: [17, 17],
+});
+
+const EDIT_ICON = icon({
+    iconUrl: "markers/entity-marker.svg",
+    iconSize: [17, 17],
+});
+
+const QUEST_ICON = icon({
+    iconUrl: "markers/position-marker.svg",
+    iconSize: [28, 36],
+});
 
 export interface LocationMarkerProps {
     onMapClick: (e: LeafletMouseEvent) => void;
@@ -10,6 +32,25 @@ export interface LocationMarkerProps {
 
 const LocationMarker: React.FC<LocationMarkerProps> = ({ onMapClick }) => {
     const [position, setPosition] = useState<LatLngExpression>();
+
+    if (window.DeviceOrientationEvent) {
+
+        window.addEventListener('deviceorientation', function(event) {
+            var alpha = null;
+            //Check for iOS property
+            // @ts-ignore
+            if (event.webkitCompassHeading) {
+                // @ts-ignore
+                alpha = event.webkitCompassHeading;
+            }
+            //non iOS
+            else {
+                alpha = event.alpha;
+            }
+            alert(alpha);
+        }, false);
+    }
+
     const map = useMapEvents({
         click(e) {
             onMapClick(e);
@@ -23,7 +64,7 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({ onMapClick }) => {
         map.locate({setView: true, maxZoom: 16});
     }, [map])
     return (position ?
-        <Marker position={position}>
+        <Marker position={position} icon={POSITION_ICON}>
             <Popup>You are here</Popup>
         </Marker> : <span></span>
     )
@@ -98,7 +139,7 @@ const Map: React.FC<Props> = ({ mode, center, overlays, markers, onAreaCreate, o
 
             },
         }),
-        [markers],
+        [markers, onMarkerSelect],
     )
 
     return (
@@ -111,10 +152,10 @@ const Map: React.FC<Props> = ({ mode, center, overlays, markers, onAreaCreate, o
                 <Polygon pathOptions={overlay.options} positions={overlay.polygon} />
             ))}
             {markers?.map(marker => (
-                <Marker position={marker.position} eventHandlers={markerEventsHandlers}></Marker>
+                <Marker position={marker.position} eventHandlers={markerEventsHandlers} icon={QUEST_ICON}></Marker>
             ))}
             {mode === 'draw' && drawingMarkers?.map(drawingMarker => (
-                <Marker position={drawingMarker} draggable eventHandlers={eventHandlers}></Marker>
+                <Marker position={drawingMarker} draggable eventHandlers={eventHandlers} icon={EDIT_ICON}></Marker>
             ))}
             {mode === 'draw' && drawingMarkers && <Polygon positions={drawingMarkers} />}
             <LocationMarker onMapClick={onMapClick} />
