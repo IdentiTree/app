@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     wallet: {
         type: String,
         required: true
-    }
+    },
     avatar: {
         type: String,
         default: "/image/defaultavatar.png"
