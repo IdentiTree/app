@@ -48,7 +48,7 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({ onMapClick }) => {
                 alpha = event.alpha;
             }
             if (alpha) {
-                setRotation(alpha);
+                setRotation(alpha - 190);
             }
         }, false);
     }
