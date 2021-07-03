@@ -1,11 +1,11 @@
-import { users } from "./sampleData/usersData";
+import { users } from "./sampleData/userData";
 import { encrypt } from "../util/crypto";
 import { createDID } from "../util/did.js";
 import { User } from '../models/User';
 import { connectToMongo } from '../config/mongo';
 import { MONGODB_URI } from '../util/secrets';
 
-connectToMongo(MONGODB_URI);
+connectToMongo(MONGODB_URI || "mongo://127.0.0.1:27017/local");
 
 users.map(async (user: any) => {
     const DID_Data = await createDID();

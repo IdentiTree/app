@@ -1,10 +1,12 @@
 import crypto from 'crypto';
 import path from 'path';
 import dotenv from 'dotenv';
-import { SESSION_SECRET as encryptionSecret } from '../util/secrets';
+import { SESSION_SECRET } from '../util/secrets';
 
 const algorithm = 'aes-256-ctr';
 const iv = crypto.randomBytes(16);
+
+const encryptionSecret = SESSION_SECRET || "asdfasdfasdfasdf";
 
 /**
  * Encrypts the passed text and returns the iv and encrypted content
