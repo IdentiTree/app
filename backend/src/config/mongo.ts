@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 /**
  * connect to the database running on the connection string provided
@@ -14,11 +14,11 @@ const connectToMongo = async (connectionString: string): Promise<void> => {
       useNewUrlParser: true,
       useCreateIndex: true
     });
-    console.log(`--> Connected to MongoDB on ${connection.connection.host}`)
+    console.log(`--> Connected to MongoDB on ${connection.connection.host}`);
   } catch (error) {
     console.error(`Can't connect to MongoDB: ${error}`);
     process.exit(1);
   }
-}
+};
 
-export { connectToMongo }
+export { connectToMongo };
