@@ -9,6 +9,7 @@
     "author": "Bowden Kelly",
     "license": "MIT",
     "scripts": {
+        "dev": "nodemon src/server.ts",
         "build-ts": "tsc",
         "build": "npm run build-ts && npm run lint",
         "debug": "npm run build && npm run watch-debug",
@@ -33,6 +34,7 @@
         "bcrypt-nodejs": "0.0.3",
         "bcryptjs": "^2.4.3",
         "bluebird": "3.7.2",
+        "child_process": "^1.0.2",
         "compression": "1.7.4",
         "connect-mongo": "4.4.0",
         "dotenv": "8.2.0",
