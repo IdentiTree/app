@@ -5,6 +5,7 @@ import path from "path";
 import mongoose from "mongoose";
 import bluebird from "bluebird";
 import { MONGODB_URI } from "./util/secrets";
+import { connectToMongo } from './config/mongo';
 
 // Controllers (route handlers)
 import * as apiController from "./controllers/api";
@@ -17,12 +18,7 @@ const app = express();
 const mongoUrl = MONGODB_URI;
 mongoose.Promise = bluebird;
 
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true } ).then(
-    () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
-).catch(err => {
-    console.log(`MongoDB connection error. Please make sure MongoDB is running. ${err}`);
-    // process.exit();
-});
+connectToMongo(mongoUrl);
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);
