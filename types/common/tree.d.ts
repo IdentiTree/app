@@ -1,6 +1,6 @@
 // types/common/tree.d.ts
 // OPEN COUNCIL DATA STANDARDS: http://standards.opencouncildata.org/#/trees
-interface Tree {
+export interface Tree {
 
     // --- Required ---
     // lat`: Latitude
