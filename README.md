@@ -2,6 +2,11 @@
 Frontend Application Odyssey for the Hackathon
 
 
+DEMO: https://identitree-app.herokuapp.com/
+
+[Landingpage/Docs](https://identitree.github.io/app/) 
+
+
 ## Setup Local
 
 ### Backend
@@ -14,7 +19,7 @@ docker-compose up -d
 2. Copy env file
 ```bash
 cd backend
-cp .env.example .env
+cp .env.example ~/src/.env
 ```
 
 3. Start Node.js app (in the `/backend` folder)
