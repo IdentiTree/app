@@ -16,6 +16,10 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    wallet: {
+        type: String,
+        required: true
+    }
     avatar: {
         type: String,
         default: "/image/defaultavatar.png"

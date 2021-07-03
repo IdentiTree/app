@@ -19,7 +19,9 @@ const userLogin = asyncHandler(async (req: Request, res: Response) => {
         res.json({
             token,
             username: user.username,
-            did: user.did
+            did: user.did,
+            avatar: user.avatar,
+            wallet: user.wallet
         });
     } else {
         res.status(403);
