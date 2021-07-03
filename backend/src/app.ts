@@ -1,6 +1,5 @@
 import express from "express";
 import compression from "compression";
-import bodyParser from "body-parser";
 import path from "path";
 import mongoose from "mongoose";
 import bluebird from "bluebird";
@@ -23,8 +22,7 @@ connectToMongo(mongoUrl);
 // Express configuration
 app.set("port", process.env.PORT || 3000);
 app.use(compression());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use("/",
     express.static(path.join(__dirname,"../../frontend/build/"), { maxAge: 31557600000 })
