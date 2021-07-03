@@ -5,8 +5,8 @@ import { Box } from "@material-ui/core"
 function Home() {
   return (
     <BaseLayout>
-      <Box display="flex" flexDirection="column" height="100vh">
       <h1>Home</h1>
+      <Box display="flex" flexDirection="column" height="100vh">
       <Box flexGrow="1">
         <Map
           mode="draw"
