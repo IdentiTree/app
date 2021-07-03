@@ -4,7 +4,7 @@ import path from "path";
 import mongoose from "mongoose";
 import bluebird from "bluebird";
 import { MONGODB_URI } from "./util/secrets";
-import { connectToMongo } from './config/mongo';
+import { connectToMongo } from "./config/mongo";
 
 // Controllers (route handlers)
 import * as apiController from "./controllers/api";
