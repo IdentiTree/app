@@ -35,5 +35,13 @@ npm install
 npm run start
 ```
 
+## Development
 
+You can just run the backend with `npm run dev`if you have `nodemon` and `ts-node`installed globaly.
+
+```bash
+npm i -g nodemon
+npm i -g ts-node
+npm run dev 
+```
 
