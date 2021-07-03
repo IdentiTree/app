@@ -10,6 +10,7 @@ import Router from './Router'
 const muiTheme = createMuiTheme(theme);
 
 function App() {
+
   return (
     <ThemeProvider theme={muiTheme}>
       <CssBaseline />
