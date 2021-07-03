@@ -43,7 +43,7 @@ export default function AreaEntry(props: AreaEntryProps) {
                 {/*    {props.title}*/}
                 {/*</Typography>*/}
                 <div>
-                    <Typography variant="h5" component="h2">
+                    <Typography variant="h6" component="h2">
                         {props.title}
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
