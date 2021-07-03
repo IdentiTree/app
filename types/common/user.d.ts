@@ -3,6 +3,7 @@ export interface BaseUser {
     username: string;
     did: string;
     avatar: string;
+    wallet: string;
 }
 
 // Example for Backend:
