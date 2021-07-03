@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 const { exec } = require("child_process");
 
 const walletInfo = asyncHandler(async (req: Request, res: Response) => {
-    exec("./cli-wallet server-status", (error: string, stdout: string, stderr: string) => {
+    exec("/backend/cli-wallet server-status", (error: string, stdout: string, stderr: string) => {
         if (error) {
             console.log(`error: ${error}`);
             res.json({
@@ -28,7 +28,7 @@ const walletInfo = asyncHandler(async (req: Request, res: Response) => {
 });
 
 const walletInit = asyncHandler(async (req: Request, res: Response) => {
-    exec("./cli-wallet init", (error: string, stdout: string, stderr: string) => {
+    exec("/backend/cli-wallet init", (error: string, stdout: string, stderr: string) => {
         if (error) {
             console.log(`error: ${error}`);
             res.json({
@@ -52,7 +52,7 @@ const walletInit = asyncHandler(async (req: Request, res: Response) => {
 });
 
 const walletBalance = asyncHandler(async (req: Request, res: Response) => {
-    exec("./cli-wallet balance", (error: string, stdout: string, stderr: string) => {
+    exec("/backend/cli-wallet balance", (error: string, stdout: string, stderr: string) => {
         if (error) {
             console.log(`error: ${error}`);
             res.json({
@@ -75,7 +75,7 @@ const walletBalance = asyncHandler(async (req: Request, res: Response) => {
     });
 });
 const walletAddress = asyncHandler(async (req: Request, res: Response) => {
-    exec("./cli-wallet address -receive", (error: string, stdout: string, stderr: string) => {
+    exec("/backend/cli-wallet address -receive", (error: string, stdout: string, stderr: string) => {
         if (error) {
             console.log(`error: ${error}`);
             res.json({
