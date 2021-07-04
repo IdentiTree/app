@@ -1,7 +1,7 @@
 import BaseLayout from "../../layout/BaseLayout";
 import Map from "../../components/Map";
 import {Box, Button, Drawer, makeStyles, MenuItem, Select, Typography} from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { LatLngExpression } from 'leaflet';
 
 const useStyles = makeStyles({
@@ -14,7 +14,26 @@ const useStyles = makeStyles({
 export default function AddArea() {
     const classes = useStyles();
     const [newArea, setNewArea] = useState<LatLngExpression[]>([]); 
-    const [openDrawer, setOpenDrawer] = useState<boolean>(false); 
+    const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+    const [types, setTypes] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/areas/types')
+            .then(response => response.json())
+            .then(data => setTypes(data));
+    }, []);
+
+    const submitArea = async () => {
+        await fetch('/api/areas', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({a: 1, b: 'Textual content'})
+          });
+          // TODO: go to area list
+    };
 
     return (
         <BaseLayout>

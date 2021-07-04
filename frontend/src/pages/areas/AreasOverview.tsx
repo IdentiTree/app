@@ -19,6 +19,13 @@ const useStyles = makeStyles({
 
 export default function AreasOverview() {
     const classes = useStyles();
+    const [areas, setAreas] = useState();
+
+    useEffect(() => {
+        fetch('/api/area')
+            .then(response => response.json())
+            .then(data => setAreas(data));
+    }, []);
 
     return (
         <BaseLayout>
