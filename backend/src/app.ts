@@ -30,7 +30,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/agent', agentRoutes);
-app.use('/api/area', areaRoutes);
+app.use('/api/areas', areaRoutes);
 
 app.use(errorHandler);
 
