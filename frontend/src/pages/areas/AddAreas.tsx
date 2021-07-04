@@ -33,7 +33,7 @@ export default function AddArea() {
 
     return (
         <BaseLayout>
-            <Box className={classes.mapBox}  display="flex" flexDirection="column" height="75vh">
+            <Box className={classes.mapBox}  display="flex" flexDirection="column">
                 <Box flexGrow="1" margin={"1rem"}>
                     <Map
                         mode="draw"

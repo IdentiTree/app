@@ -1,13 +1,14 @@
-import {Box, Typography} from "@material-ui/core";
+import {Box, makeStyles} from "@material-ui/core";
+import { Theme } from '../../theme/types';
 import Map from "../../components/Map";
 import BaseLayout from "../../layout/BaseLayout";
 
 export default function MapTree() {
+    const classes = useStyles()
+    
     return (
         <BaseLayout>
-            <h1>Map</h1>
-            <Typography variant="h6">Add trees</Typography>
-            <Box display="flex" flexDirection="column" height="80vh">
+            <Box className={classes.mapBox} display="flex" flexDirection="column">
                 <Box flexGrow="1" margin={"1rem"}>
                     <Map
                         mode="place"
@@ -33,3 +34,10 @@ export default function MapTree() {
         </BaseLayout>
     )
 }
+
+
+const useStyles = makeStyles((theme: Theme) => ({
+    mapBox: {
+        height: 'calc(100vh - 130px)',
+    },
+}));
