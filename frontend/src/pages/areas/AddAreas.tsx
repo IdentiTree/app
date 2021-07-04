@@ -2,7 +2,7 @@ import BaseLayout from "../../layout/BaseLayout";
 import Map from "../../components/Map";
 import { Box, Button, Drawer, makeStyles } from "@material-ui/core";
 import { Theme } from '../../theme/types';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { LatLngExpression } from 'leaflet';
 import AreaTypes from '../../components/areas/AreaTypes';
 
