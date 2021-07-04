@@ -1,7 +1,7 @@
 // types/common/coordinate.d.ts
 export interface Coordinate {
     // lat`: Latitude
-    lat: string;
+    lat: number;
     // `lon`: longitude
-    lon: string; 
+    lon: number;
 }
