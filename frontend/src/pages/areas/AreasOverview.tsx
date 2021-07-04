@@ -30,7 +30,6 @@ export default function AreasOverview() {
 
     return (
         <BaseLayout>
-            <h1>Areas</h1>
             <Dashboard totalCompensated={392} credits={19} />
             <div className={classes.root}>
                 <AreaEntry title={"Area 1"} name={"Evergreen Forest"} carbonAmount={1.2} area={3.4}/>

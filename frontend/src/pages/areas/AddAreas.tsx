@@ -1,6 +1,6 @@
 import BaseLayout from "../../layout/BaseLayout";
 import Map from "../../components/Map";
-import { Box, Button, Drawer, makeStyles } from "@material-ui/core";
+import { Box, Button, Drawer, makeStyles, TextField, Typography } from "@material-ui/core";
 import { Theme } from '../../theme/types';
 import { useEffect, useState } from "react";
 import type { LatLngExpression } from 'leaflet';
@@ -9,6 +9,7 @@ import { polygon as turfPolygon, area as turfArea } from '@turf/turf';
 
 export default function AddArea() {
     const classes = useStyles();
+    const [name, setName] = useState<string>();
     const [newArea, setNewArea] = useState<LatLngExpression[]>([]); 
     const [openDrawer, setOpenDrawer] = useState<boolean>(false);
     const [types, setTypes] = useState<[]>([]); 
@@ -44,7 +45,7 @@ export default function AddArea() {
 
     return (
         <BaseLayout>
-            <Box className={classes.mapBox}  display="flex" flexDirection="column" height="75vh">
+            <Box className={classes.mapBox}  display="flex" flexDirection="column">
                 <Box flexGrow="1" margin={"1rem"}>
                     <Map
                         mode="draw"
@@ -66,6 +67,16 @@ export default function AddArea() {
             </div>
             <Drawer anchor={'bottom'} open={openDrawer} onClose={() => setOpenDrawer(false)}>
                 <Box className={classes.overlay}>
+                    <Typography variant="h4">Add Area</Typography>
+                    <Typography color="textSecondary" style={{marginBottom: 16}}>Please select a percentage for each type of area.</Typography>
+                    <TextField
+                        className={classes.textField}
+                        id='area-type'
+                        type='text'
+                        label="Area Name"
+                        variant="filled"
+                        value={name}
+                    />
                     <AreaTypes
                         types={types}
                         onChange={(areaTypes) => setAreaTypes(areaTypes)}
@@ -100,5 +111,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         bottom: 65,
         right: 8,
         zIndex: 1000,
-    }
+    },
+    textField: {
+        width: '100%',
+        marginBottom: 16,
+    },
 }));

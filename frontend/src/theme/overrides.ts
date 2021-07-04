@@ -6,6 +6,12 @@ export const overrides = {
       },
     },
   },
+  MuiCard: {
+    borderRadius: 12,
+  },
+  MuiBox: {
+    borderRadius: 12,
+  },
   MuiGridPanel: {
     background: 'red',
   },

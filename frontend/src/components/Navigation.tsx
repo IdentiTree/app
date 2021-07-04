@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
-        width: 375,
+        width: '100%',
         position: "fixed",
         bottom: 0,
     },
@@ -15,26 +15,28 @@ const useStyles = makeStyles({
 
 export function Navigation() {
     const classes = useStyles();
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState('Areas');
+
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+        setValue(newValue);
+    };
 
     return (
         <BottomNavigation
             value={value}
-            onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
+            onChange={handleChange}
             showLabels
             className={classes.root}
         >
             {/*<BottomNavigationAction label="Panoramas" icon={} component={Link} to={'/asd'} />*/}
-            <BottomNavigationAction component={Link} to={'/areas'} label="Areas" icon={<div className={classes.icon}>
+            <BottomNavigationAction component={Link} to={'/areas'} label="Areas" value='Areas' icon={<div className={classes.icon}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                           d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
                 </svg>
             </div>}/>
-            <BottomNavigationAction component={Link} to={'/map'} label="Map" icon={<div className={classes.icon}>
+            <BottomNavigationAction component={Link} to={'/map'} label="Map" value='Map' icon={<div className={classes.icon}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -43,7 +45,7 @@ export function Navigation() {
                           d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
             </div>}/>
-            <BottomNavigationAction component={Link} to={'/market'} label="Market" icon={<div className={classes.icon}>
+            <BottomNavigationAction component={Link} to={'/market'} label="Market" value='Market' icon={<div className={classes.icon}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
