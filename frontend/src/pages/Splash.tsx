@@ -1,9 +1,20 @@
+import {useHistory} from 'react-router'
+import { useEffect } from 'react'
 import { makeStyles } from "@material-ui/core"
 import Logo from "../components/Logo"
 import { Theme } from "../theme/types"
 
 function Splash() {
   const classes = useStyles()
+  const history = useHistory();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      history.push('/areas')
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
     <div className={classes.root}>
       <Logo />
