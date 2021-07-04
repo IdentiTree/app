@@ -1,12 +1,27 @@
-import BaseLayout from "../layout/BaseLayout"
+import { makeStyles } from "@material-ui/core"
+import Logo from "../components/Logo"
+import { Theme } from "../theme/types"
 
 function Home() {
+  const classes = useStyles()
   return (
-    <BaseLayout>
-      <h1>Home</h1>
-      <div>Welcome to IdentiTree!</div>
-    </BaseLayout>
+    <div className={classes.root}>
+      <Logo />
+      
+    </div>
   )
 }
+
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    height: '100vh',
+    width: '100vw',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: theme.palette.background.light,
+    padding: theme.spacing(7),
+  }
+}))
 
 export default Home
