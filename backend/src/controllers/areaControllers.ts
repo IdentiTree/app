@@ -3,6 +3,7 @@ import { User } from '../models/User';
 import asyncHandler from "express-async-handler";
 import { Request, Response } from 'express';
 import { estimateBiomeCarbonCapture } from '../util/treeUtils';
+import { biomes as biomesData} from '../data/sampleData/biomeData';
 
 /**
  * Get all areas
@@ -23,7 +24,7 @@ const getAllAreas = asyncHandler(async (req: Request, res: Response) => {
 /**
  * get area by ID
  *
- * @route   GET /api/area/:id
+ * @route   GET /api/area/id/:id
  * @return  Area Object
  */
 
@@ -73,7 +74,9 @@ const createArea = asyncHandler(async (req: Request, res: Response) => {
  * @return  list of all the biomes
  */
 
-
+const getBiomeTypes = asyncHandler(async (req: Request, res: Response) => {
+    res.json(biomesData);
+})
 
 const indexArea = asyncHandler(async (req: Request, res: Response) => {
     const areas: any = await Area.find();
@@ -90,4 +93,4 @@ const indexArea = asyncHandler(async (req: Request, res: Response) => {
 
 
 
-export { areaInfo, createArea, indexArea };
+export { areaInfo, createArea, indexArea, getBiomeTypes, getAllAreas };
