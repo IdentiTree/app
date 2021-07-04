@@ -2,9 +2,26 @@ import {Box, makeStyles} from "@material-ui/core";
 import { Theme } from '../../theme/types';
 import Map from "../../components/Map";
 import BaseLayout from "../../layout/BaseLayout";
+import { Area } from '../../../../types/common/Area';
+import { useEffect, useState } from "react";
+import { Tree } from "../../../../types/common/Tree";
 
 export default function MapTree() {
     const classes = useStyles()
+    const [areas, setAreas] = useState<Area[]>([]);
+    const [trees, setTrees] = useState<Tree[]>([]);
+
+    useEffect(() => {
+        fetch('/api/area')
+            .then(response => response.json())
+            .then(data => setAreas(data));
+    }, []);
+
+    useEffect(() => {
+        fetch('/api/trees')
+            .then(response => response.json())
+            .then(data => setAreas(data));
+    }, []);
     
     return (
         <BaseLayout>
