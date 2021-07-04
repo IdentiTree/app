@@ -64,6 +64,7 @@ export default function AddArea() {
                         onChange={(area) => console.log(area)}
                     />
                     <Button
+                        style={{marginTop: 16}}
                         color="primary"
                         size="large"
                         variant="contained"
