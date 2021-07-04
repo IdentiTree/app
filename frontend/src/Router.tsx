@@ -3,10 +3,10 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import Home from './pages/Home'
+import Home from './pages/Splash'
 import AreasOverview from "./pages/areas/AreasOverview";
 import Market from "./pages/market/Market";
-import AddArea from "./pages/areas/AddArea";
+import AddArea from "./pages/areas/AddAreas";
 import MapTree from "./pages/maps/MapTree";
 
 function Router() {

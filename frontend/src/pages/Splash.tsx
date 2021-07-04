@@ -2,12 +2,11 @@ import { makeStyles } from "@material-ui/core"
 import Logo from "../components/Logo"
 import { Theme } from "../theme/types"
 
-function Home() {
+function Splash() {
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <Logo />
-      
     </div>
   )
 }
@@ -24,4 +23,4 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-export default Home
+export default Splash
