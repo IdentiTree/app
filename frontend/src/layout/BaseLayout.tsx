@@ -1,7 +1,8 @@
+import Header from '../components/Header';
 import Navigation from '../components/Navigation'
 
 export interface BaseLayoutProps {
-  children: JSX.Element[]
+  children: JSX.Element[] | React.Component | any
 }
 
 function BaseLayout(props: BaseLayoutProps) {
@@ -9,6 +10,7 @@ function BaseLayout(props: BaseLayoutProps) {
 
   return (
     <div>
+      <Header />
       {children}
       <Navigation />
     </div>
