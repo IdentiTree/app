@@ -14,9 +14,7 @@ if (process.env.NODE_ENV === "development") {
  * Loads Application Agent 
  */
 
- agentInit().then((agent) => {
-     console.log("works!", agent)
- })
+ agentInit().then((agent) => {})
 
 /**
  * Start Express server.

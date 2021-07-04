@@ -7,6 +7,7 @@ import { MONGODB_URI } from "./util/secrets";
 import { connectToMongo } from './config/mongo';
 import userRoutes from './routes/userRoutes';
 import agentRoutes from './routes/agentRoutes';
+import areaRoutes from './routes/areaRoutes';
 import { errorHandler } from './middleware/errors';
 
 
@@ -26,13 +27,21 @@ app.set("port", process.env.PORT || 3000);
 app.use(compression());
 app.use(express.json());
 
+
 app.use('/api/users', userRoutes);
 app.use('/api/agent', agentRoutes);
+app.use('/api/area', areaRoutes);
+
+app.use(errorHandler);
+
 app.use("/",
     express.static(path.join(__dirname,"../../frontend/build/"), { maxAge: 31557600000 })
 );
 
-app.use(errorHandler);
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname, '../../frontend/build/index.html'));
+});
+
 
 /**
  * API examples routes.

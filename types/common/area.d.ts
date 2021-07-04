@@ -8,7 +8,7 @@ export interface Area {
     // digital identtiy of the area
     did: string,
     // the owner of the area, (a IOTA DID or ID of the user)
-    owner: string,
+    owners: Array<string>,
     // Coordinates of the Area
     coordinates: Array<Coordinate>,
     // Area size in square meters

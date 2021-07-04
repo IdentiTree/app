@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { polygon as turfPolygon, area as turfArea } from '@turf/turf';
 import { MapContainer, TileLayer, Marker, Popup, Polygon, useMapEvents } from 'react-leaflet';
 import { icon } from "leaflet";
-
+import RotatedMarker from './RotatedMarker';
 
 const POSITION_ICON = icon({
     iconUrl: "markers/position-marker.svg",
@@ -22,7 +22,7 @@ const EDIT_ICON = icon({
 });
 
 const QUEST_ICON = icon({
-    iconUrl: "markers/position-marker.svg",
+    iconUrl: "markers/quest-marker-default.svg",
     iconSize: [28, 36],
 });
 
@@ -32,6 +32,7 @@ export interface LocationMarkerProps {
 
 const LocationMarker: React.FC<LocationMarkerProps> = ({ onMapClick }) => {
     const [position, setPosition] = useState<LatLngExpression>();
+    const [rotation, setRotation] = useState<number>(0);
 
     if (window.DeviceOrientationEvent) {
 
@@ -42,12 +43,13 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({ onMapClick }) => {
             if (event.webkitCompassHeading) {
                 // @ts-ignore
                 alpha = event.webkitCompassHeading;
-            }
             //non iOS
-            else {
+            } else {
                 alpha = event.alpha;
             }
-            alert(alpha);
+            if (alpha) {
+                setRotation(alpha + 190);
+            }
         }, false);
     }
 
@@ -56,21 +58,22 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({ onMapClick }) => {
             onMapClick(e);
         },
         locationfound(e) {
-            console.log('location', e)
             setPosition(e.latlng)
         },
     })
+
     useEffect(() => {
         map.locate({setView: true, maxZoom: 16});
     }, [map])
+
     return (position ?
-        <Marker position={position} icon={POSITION_ICON}>
+        <RotatedMarker position={position} icon={POSITION_ICON} rotationAngle={rotation} rotationOrigin="center">
             <Popup>You are here</Popup>
-        </Marker> : <span></span>
+        </RotatedMarker> : <span></span>
     )
 }
 
-type CustomMarker = { position: LatLngExpression };
+type CustomMarker = { position: LatLngExpression, type: 'quest' | 'entity' };
 
 export interface Props {
     center: [number, number];
@@ -152,7 +155,7 @@ const Map: React.FC<Props> = ({ mode, center, overlays, markers, onAreaCreate, o
                 <Polygon pathOptions={overlay.options} positions={overlay.polygon} />
             ))}
             {markers?.map(marker => (
-                <Marker position={marker.position} eventHandlers={markerEventsHandlers} icon={QUEST_ICON}></Marker>
+                <Marker position={marker.position} eventHandlers={markerEventsHandlers} icon={marker.type === 'quest' ? QUEST_ICON : ENTITY_ICON}></Marker>
             ))}
             {mode === 'draw' && drawingMarkers?.map(drawingMarker => (
                 <Marker position={drawingMarker} draggable eventHandlers={eventHandlers} icon={EDIT_ICON}></Marker>
