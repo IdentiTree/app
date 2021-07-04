@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { Coordinate } from '../../../types/common/coordinate';
 
 const treeSchema = new mongoose.Schema({
     treeType: {
@@ -40,7 +39,7 @@ const treeSchema = new mongoose.Schema({
 
 export interface ITreeModel extends mongoose.Document {
     treeType: number;
-    coordinate: Coordinate;
+    coordinate: { lat: number, lng: number };
     commonName: string;
     carbonCapture: number;
     area: string;
