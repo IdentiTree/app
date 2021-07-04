@@ -1,11 +1,13 @@
 import express from 'express';
 import {
-    areaInfo, createArea, indexArea
+    areaInfo, createArea, indexArea, getAllAreas, getBiomeTypes
 } from '../controllers/areaControllers';
 const router = express.Router();
 
-router.route('/:id').get(areaInfo);
-router.route('/').post(createArea);
-router.route('/').get(indexArea);
+router.route('/id/:id').get(areaInfo);
+router.route('/')
+    .post(createArea)
+    .get(getAllAreas)
+router.route('/types').get(getBiomeTypes)
 
 export default router;
