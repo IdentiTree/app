@@ -23,7 +23,7 @@ export default function AreasOverview() {
     const [areas, setAreas] = useState<any[]>([]);
 
     useEffect(() => {
-        fetch('/api/area')
+        fetch('/api/areas')
             .then(response => response.json())
             .then(data => setAreas(data));
     }, []);
