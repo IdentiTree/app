@@ -56,11 +56,7 @@ export default function AddArea() {
             <Drawer anchor={'bottom'} open={openDrawer} onClose={() => setOpenDrawer(false)}>
                 <Box className={classes.overlay}>
                     <AreaTypes
-                        types={[
-                            { type: 'Lorem', id: 0 },
-                            { type: 'Ipsum', id: 1 },
-                            { type: 'Dolor', id: 2 },
-                        ]}
+                        types={types}
                         onChange={(area) => console.log(area)}
                     />
                     <Button
