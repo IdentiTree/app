@@ -3,7 +3,7 @@ import { Theme } from '../../theme/types';
 import { MenuItem, Select, TextField, Grid, Button, makeStyles } from "@material-ui/core";
 
 export interface AreaType {
-  type: number;
+  biomeId: number;
   percentage: number;
 }
 
@@ -14,11 +14,11 @@ type Props = {
 }
 
 const AreaTypes: React.FC<Props> = ({ types, onChange }) => {
-  const [selectedTypes, setSelectedTypes] = useState<AreaType[]>([{ type: 0, percentage: 10 }]);
+  const [selectedTypes, setSelectedTypes] = useState<AreaType[]>([{ biomeId: 0, percentage: 10 }]);
   const classes = useStyles();
 
   const addAreaType = () => {
-    setSelectedTypes(prev => [...prev, { type: 0, percentage: 10 }])
+    setSelectedTypes(prev => [...prev, { biomeId: 0, percentage: 10 }])
   }
 
   useEffect(() => {
@@ -37,11 +37,11 @@ const AreaTypes: React.FC<Props> = ({ types, onChange }) => {
               id={`${i}-${selectedType}-type`}
               variant="filled"
               defaultValue="Select a Type"
-              value={String(selectedType.type)}
+              value={String(selectedType.biomeId)}
               onChange={({target: {value}}) => setSelectedTypes(prev => {
                 prev[i] = {
                   ...prev[i],
-                  type: Number(value) as number
+                  biomeId: Number(value) as number
                 };
                 return [...prev];
               })}
