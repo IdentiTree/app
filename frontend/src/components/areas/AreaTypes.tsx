@@ -27,8 +27,6 @@ const AreaTypes: React.FC<Props> = ({ types, onChange }) => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h4">Area Types</Typography>
-      <Typography color="textSecondary" style={{marginBottom: 16}}>Please select a percentage for each type of area.</Typography>
       {selectedTypes.map((selectedType, i) => (
         <Grid container spacing={4} style={{marginBottom: 8}}>
           <Grid item xs={8}>
