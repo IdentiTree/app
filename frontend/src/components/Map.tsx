@@ -1,7 +1,6 @@
 import type { LatLngExpression, LeafletMouseEvent, PathOptions } from 'leaflet';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { polygon as turfPolygon, area as turfArea } from '@turf/turf';
 import { MapContainer, TileLayer, Marker, Popup, Polygon, useMapEvents } from 'react-leaflet';
 import { icon } from "leaflet";
 import RotatedMarker from './RotatedMarker';
@@ -108,10 +107,6 @@ const Map: React.FC<Props> = ({ mode, center, overlays, markers, onAreaCreate, o
     useEffect(() => {
         if (drawingMarkers.length > 3 && onAreaCreate) {
             onAreaCreate(drawingMarkers);
-            //@ts-ignore
-            const polygon = turfPolygon([[...drawingMarkers.map(value => [value.lng, value.lat]), [drawingMarkers[0].lng, drawingMarkers[0].lat]]]);
-            const area = turfArea(polygon);
-            console.log(area);
         };
     }, [drawingMarkers, onAreaCreate]);
 

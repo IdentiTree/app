@@ -4,14 +4,15 @@ import { Box, Button, Drawer, makeStyles } from "@material-ui/core";
 import { Theme } from '../../theme/types';
 import { useEffect, useState } from "react";
 import type { LatLngExpression } from 'leaflet';
-import AreaTypes from '../../components/areas/AreaTypes';
-
+import AreaTypes, { AreaType } from '../../components/areas/AreaTypes';
+import { polygon as turfPolygon, area as turfArea } from '@turf/turf';
 
 export default function AddArea() {
     const classes = useStyles();
     const [newArea, setNewArea] = useState<LatLngExpression[]>([]); 
     const [openDrawer, setOpenDrawer] = useState<boolean>(false);
     const [types, setTypes] = useState<[]>([]); 
+    const [areaTypes, setAreaTypes] = useState<AreaType[]>([]); 
     
     useEffect(() => {
         fetch('/api/areas/types')
@@ -20,13 +21,23 @@ export default function AddArea() {
     }, []);
 
     const submitArea = async () => {
-        await fetch('/api/areas', {
+
+        //@ts-ignore
+        const polygon = turfPolygon([[...newArea.map(value => [value.lng, value.lat]), [newArea[0].lng, newArea[0].lat]]]);
+        const area = turfArea(polygon);
+
+        await fetch('/api/areas/', {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({a: 1, b: 'Textual content'})
+            body: JSON.stringify({
+                "name": "tiergarten",
+                "coordinates": [newArea],
+                "area": area / 10000,
+                "biomes": areaTypes,
+            })
           });
           // TODO: go to area list
     };
@@ -57,14 +68,14 @@ export default function AddArea() {
                 <Box className={classes.overlay}>
                     <AreaTypes
                         types={types}
-                        onChange={(area) => console.log(area)}
+                        onChange={(areaTypes) => setAreaTypes(areaTypes)}
                     />
                     <Button
                         style={{marginTop: 16}}
                         color="primary"
                         size="large"
                         variant="contained"
-                        onClick={() => console.log('TODO')}>
+                        onClick={() => submitArea()}>
                         Submit Area
                     </Button>
                 </Box>
