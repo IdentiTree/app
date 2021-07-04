@@ -10,6 +10,7 @@ import agentRoutes from './routes/agentRoutes';
 import areaRoutes from './routes/areaRoutes';
 import treeRoutes from './routes/treeRoutes';
 import { errorHandler } from './middleware/errors';
+import { createFakeUsers } from './data/seeder';
 
 
 // Create Express server
@@ -22,6 +23,8 @@ const mongoUrl = MONGODB_URI || "mongodb://localhost:27017/local";
 mongoose.Promise = bluebird;
 
 connectToMongo(mongoUrl);
+
+createFakeUsers();
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);
