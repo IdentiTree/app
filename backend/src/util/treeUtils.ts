@@ -7,7 +7,7 @@ import { trees } from "../data/sampleData/treeData";
  * @param   {Number} treeID id of specie of the tree
  * @param   {Number} height height of the tree in meters
  * @param   {Number} circumference circumference of the tree in meters
- * @return  Carbon content in tons in a lifespan
+ * @return  annual carbon content in tons
  */
 
 const getTreeCarbonCapture = (treeID: number, height: number, circumference: number): number => {
@@ -31,7 +31,7 @@ const getTreeCarbonCapture = (treeID: number, height: number, circumference: num
 
     const carbonContent = (trunkBiomass + rootBiomass + crownBiomass)/2;
 
-    return carbonContent;
+    return 0.01 * carbonContent;
 };
 
 export { getTreeCarbonCapture };
