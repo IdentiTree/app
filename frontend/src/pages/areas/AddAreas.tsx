@@ -76,6 +76,7 @@ export default function AddArea() {
                         label="Area Name"
                         variant="filled"
                         value={name}
+                        onChange={({target: {value}}) => setName(value)}
                     />
                     <AreaTypes
                         types={types}
