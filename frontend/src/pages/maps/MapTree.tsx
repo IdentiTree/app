@@ -25,6 +25,7 @@ export default function MapTree() {
             .then(response => response.json())
             .then(data => setAreas(data));
     }, []);
+    
     const [type, setType] = React.useState<string>(treeTypes[0])
     const [circumference, setCircumference] = React.useState<number>(0)
     const [height, setHeight] = React.useState<number>(0)
@@ -127,8 +128,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     textField: {
         width: '100%',
+        marginBottom: 8,
     },
     select: {
         width: '100%',
+        marginBottom: 8,
     },
 }));
