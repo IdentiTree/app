@@ -1,10 +1,9 @@
 import BaseLayout from "../../layout/BaseLayout";
 import AreaEntry from "../../components/areas/AreaEntry";
-import {Button, makeStyles} from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import Dashboard from "../../components/areas/Dashboard";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Area } from '../../../../types/common/Area';
 
 const useStyles = makeStyles({
     root: {
@@ -21,7 +20,7 @@ const useStyles = makeStyles({
 
 export default function AreasOverview() {
     const classes = useStyles();
-    const [areas, setAreas] = useState<Area[]>([]);
+    const [areas, setAreas] = useState<any[]>([]);
 
     useEffect(() => {
         fetch('/api/area')
