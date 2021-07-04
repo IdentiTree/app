@@ -4,7 +4,7 @@ import {
 } from '../controllers/areaControllers';
 const router = express.Router();
 
-router.route('/info').get(areaInfo);
+router.route('/:id').get(areaInfo);
 router.route('/').post(createArea);
 router.route('/').get(indexArea);
 

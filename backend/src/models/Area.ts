@@ -1,19 +1,38 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 import { Area as AreaSharedSchema } from '../../../types/common/area'
 import { encrypt } from "../util/crypto";
 import { createDID } from "../util/did.js";
 
-
-const AreaSchema = new Schema<IAreaModel>({
+const AreaSchema = new mongoose.Schema({
     did: {
         type: String,
         unique: true,
         required: false
     },
-    wallet: {
+    name: {
         type: String,
-        required: false
+        required: true,
+    },
+    coordinates: {
+        type: Array,
+        required: true
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    area: {
+        type: Number,
+        required: true
+    },
+    biomes: {
+        type: Array,
+        required: true
+    },
+    carbonCapture: {
+        type: Number,
+        required: true
     },
     key: {
         pub: {
@@ -49,7 +68,7 @@ export interface IAreaModel extends AreaSharedSchema, mongoose.Document {
 /* ----- Area Methods ---- */
 
 AreaSchema.pre('save', async function (next) {
-    let self: any = this;
+    const self: any = this;
 
     console.log("pre save", this)
     
