@@ -8,6 +8,7 @@ import { connectToMongo } from './config/mongo';
 import userRoutes from './routes/userRoutes';
 import agentRoutes from './routes/agentRoutes';
 import areaRoutes from './routes/areaRoutes';
+import treeRoutes from './routes/treeRoutes';
 import { errorHandler } from './middleware/errors';
 
 
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/agent', agentRoutes);
 app.use('/api/areas', areaRoutes);
+app.use('/api/trees', treeRoutes);
 
 app.use(errorHandler);
 
