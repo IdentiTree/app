@@ -4,19 +4,20 @@ import {
   Route,
 } from 'react-router-dom';
 import Home from './pages/Home'
-import Areas from "./components/areas/Areas";
-import Map from "./components/map/Map";
-import Market from "./components/market/Market";
+import AreasOverview from "./pages/areas/AreasOverview";
+import Market from "./pages/market/Market";
+import AddArea from "./pages/areas/AddArea";
+import MapTree from "./pages/maps/MapTree";
 
 function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route component={Areas} path="/areas" />
-        <Route component={Areas} path="/areas/:slug" />
-        <Route component={Areas} path="/create-area" />
+        <Route component={AreasOverview} path="/areas" />
+        <Route component={AreasOverview} path="/areas/:slug" />
+        <Route component={AddArea} path="/add-area" />
         
-        <Route component={Map} path="/map" />
+        <Route component={MapTree} path="/map" />
 
         <Route component={Market} path="/market" />
         <Route component={Market} path="/market/bid" />
