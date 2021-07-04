@@ -3,5 +3,5 @@ export interface Coordinate {
     // lat`: Latitude
     lat: number;
     // `lon`: longitude
-    lon: number;
+    lng: number;
 }
