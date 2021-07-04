@@ -52,7 +52,7 @@ export default function AddArea() {
                 <Box flexGrow="1" margin={"1rem"}>
                     <Map
                         mode="draw"
-                        center={[51.505, -0.09]}
+                        center={[52.51653424960838, 13.375682830810549]}
                         onAreaCreate={(area) => setNewArea(area)}
                     />
                 </Box>
