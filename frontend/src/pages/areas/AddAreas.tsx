@@ -34,7 +34,7 @@ export default function AddArea() {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "name": "tiergarten",
+                "name": name,
                 "coordinates": [newArea],
                 "area": area / 10000,
                 "biomes": areaTypes,
