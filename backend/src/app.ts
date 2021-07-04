@@ -34,9 +34,13 @@ app.use('/api/area', areaRoutes);
 
 app.use(errorHandler);
 
-app.use("*",
+app.use("/",
     express.static(path.join(__dirname,"../../frontend/build/"), { maxAge: 31557600000 })
 );
+
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname, '../../frontend/build/index.html'));
+});
 
 
 /**
