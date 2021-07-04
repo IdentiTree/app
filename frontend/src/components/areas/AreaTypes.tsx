@@ -58,6 +58,14 @@ const AreaTypes: React.FC<Props> = ({ types, onChange }) => {
               type='number'
               label="%"
               variant="filled"
+              value={String(selectedType.percentage)}
+              onChange={({target: {value}}) => setSelectedTypes(prev => {
+                prev[i] = {
+                  ...prev[i],
+                  percentage: Number(value) as number
+                };
+                return [...prev];
+              })}
             />
           </Grid>
         </Grid>

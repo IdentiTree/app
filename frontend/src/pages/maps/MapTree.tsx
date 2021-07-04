@@ -11,7 +11,7 @@ export default function MapTree() {
     const [type, setType] = React.useState<string>(treeTypes[0])
     const [circumference, setCircumference] = React.useState<number>(0)
     const [height, setHeight] = React.useState<number>(0)
-    const [openDrawer, setOpenDrawer] = React.useState<boolean>(false);
+    const [openDrawer, setOpenDrawer] = React.useState<boolean>(true);
     
     const handleType = (event: React.ChangeEvent<{ value: unknown }>) => { setType(event.target.value as string); };
 
@@ -58,6 +58,7 @@ export default function MapTree() {
                     <Select
                         className={classes.select}
                         label="Type"
+                        variant="filled"
                         value={type}
                         onChange={handleType}
                     >
@@ -108,9 +109,9 @@ const useStyles = makeStyles((theme: Theme) => ({
         padding: theme.spacing(5),
     },
     textField: {
-
+        width: '100%',
     },
     select: {
-
+        width: '100%',
     },
 }));
