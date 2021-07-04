@@ -49,4 +49,15 @@ const createTree = asyncHandler(async (req: Request, res: Response) => {
     res.json(newTree);
 });
 
-export { getAllTrees, createTree }
+/**
+ * Get tree types
+ *
+ * @route   GET /api/trees/types
+ * @return  send the JSON of all the tree types
+ */
+
+const getTreeTypes = asyncHandler(async (req: Request, res: Response) => {
+    res.json(treesData);
+})
+
+export { getAllTrees, createTree, getTreeTypes }
