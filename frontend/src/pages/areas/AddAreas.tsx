@@ -1,5 +1,6 @@
 import BaseLayout from "../../layout/BaseLayout";
 import Map from "../../components/Map";
+import { useHistory } from 'react-router';
 import { Box, Button, Drawer, makeStyles, TextField, Typography } from "@material-ui/core";
 import { Theme } from '../../theme/types';
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import { polygon as turfPolygon, area as turfArea } from '@turf/turf';
 
 export default function AddArea() {
     const classes = useStyles();
+    const history = useHistory();
     const [name, setName] = useState<string>();
     const [newArea, setNewArea] = useState<LatLngExpression[]>([]); 
     const [openDrawer, setOpenDrawer] = useState<boolean>(false);
@@ -30,8 +32,8 @@ export default function AddArea() {
         await fetch('/api/areas/', {
             method: 'POST',
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 "name": name,
@@ -39,8 +41,9 @@ export default function AddArea() {
                 "area": area / 10000,
                 "biomes": areaTypes,
             })
-          });
-          // TODO: go to area list
+        });
+        
+        history.push('/areas')
     };
 
     return (

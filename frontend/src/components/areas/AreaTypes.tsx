@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Theme } from '../../theme/types';
-import { MenuItem, Select, TextField, Typography, Grid, Button, makeStyles } from "@material-ui/core";
+import { MenuItem, Select, TextField, Grid, Button, makeStyles } from "@material-ui/core";
 
 export interface AreaType {
   biomeId: number;
