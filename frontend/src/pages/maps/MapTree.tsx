@@ -3,11 +3,28 @@ import { Box, makeStyles, Drawer, Typography, Button, TextField, Select, MenuIte
 import { Theme } from '../../theme/types';
 import Map from "../../components/Map";
 import BaseLayout from "../../layout/BaseLayout";
+import { Area } from '../../../../types/common/Area';
+import { useEffect, useState } from "react";
+import { Tree } from "../../../../types/common/Tree";
 
 const treeTypes = ['Type 1', 'Type 2', 'Type 3']
 
 export default function MapTree() {
     const classes = useStyles()
+    const [areas, setAreas] = useState<Area[]>([]);
+    const [trees, setTrees] = useState<Tree[]>([]);
+
+    useEffect(() => {
+        fetch('/api/area')
+            .then(response => response.json())
+            .then(data => setAreas(data));
+    }, []);
+
+    useEffect(() => {
+        fetch('/api/trees')
+            .then(response => response.json())
+            .then(data => setAreas(data));
+    }, []);
     const [type, setType] = React.useState<string>(treeTypes[0])
     const [circumference, setCircumference] = React.useState<number>(0)
     const [height, setHeight] = React.useState<number>(0)

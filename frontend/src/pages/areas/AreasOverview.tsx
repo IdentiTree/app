@@ -4,7 +4,7 @@ import {Button, makeStyles} from "@material-ui/core";
 import Dashboard from "../../components/areas/Dashboard";
 import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Area } from '../../../../types/common/area';
+import { Area } from '../../../../types/common/Area';
 
 const useStyles = makeStyles({
     root: {
@@ -33,10 +33,7 @@ export default function AreasOverview() {
         <BaseLayout>
             <Dashboard totalCompensated={392} credits={19} />
             <div className={classes.root}>
-                {areas.map(area => <AreaEntry title={area.name} name={"Evergreen Forest"} carbonAmount={area.carbonCapture} area={area.area}/>)}
-                <AreaEntry title={"Area 1"} name={"Evergreen Forest"} carbonAmount={1.2} area={3.4}/>
-                <AreaEntry title={"Area 2"} name={"Black Forest"} carbonAmount={3.2} area={0.4}/>
-                <AreaEntry title={"Area 3"} name={"Tierpark Berlin"} carbonAmount={13.2} area={53.4}/>
+                {areas.map(area => <AreaEntry title={area.name} name={""} carbonAmount={area.carbonCapture} area={area.area}/>)}
             </div>
             <div className={classes.addButton}>
                 <Button variant={"contained"} color={"primary"} component={Link} to={"/add-area"}>Add area</Button>

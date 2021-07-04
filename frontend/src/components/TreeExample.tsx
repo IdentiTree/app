@@ -1,4 +1,4 @@
-import { Tree } from '../../../types/common/tree';
+import { Tree } from '../../../types/common/Tree';
 
 function TreeExample() {
   const trees: Array<Tree> = []
