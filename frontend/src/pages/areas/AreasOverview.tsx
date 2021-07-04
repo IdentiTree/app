@@ -3,6 +3,7 @@ import AreaEntry from "../../components/areas/AreaEntry";
 import {Button, makeStyles} from "@material-ui/core";
 import Dashboard from "../../components/areas/Dashboard";
 import {Link} from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles({
     root: {
