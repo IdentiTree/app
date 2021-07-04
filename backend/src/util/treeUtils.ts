@@ -1,4 +1,5 @@
 import { trees } from "../data/sampleData/treeData";
+import { biomes as biomesData } from "../data/sampleData/biomeData";
 
 /**
  * Calculate tree carbon capture data from the height, circumference
@@ -34,4 +35,34 @@ const getTreeCarbonCapture = (treeID: number, height: number, circumference: num
     return 0.01 * carbonContent;
 };
 
-export { getTreeCarbonCapture };
+/**
+ * Estimate the carbon sequestration of an area using the type of
+ * biome specified by the user.
+ *
+ * @param   {Array<biome>} biomes
+ * @param   {Number} biome.biomeID
+ * @param   {Number} biome.percentage
+ * @param   {Number} totalArea total area of the land in hectares
+ * @return  {Number} Biome carbon capture
+ */
+
+const estimateBiomeCarbonCapture = (biomes: Array<{ biomeId: number, percentage: number }>, totalArea: number): number => {
+    let total = 0;
+    let totalPercentage = 0;
+    biomes.map((biome: any) => {
+        const biomeData: any = biomesData.find((b: any) => biome.biomeId == b.id);
+        total += biomeData.cc * biome.percentage/100 * totalArea;
+        totalPercentage += biome.percentage;
+    });
+
+    if (totalPercentage === 100) {
+        return total;
+    } else {
+        throw new Error("Total percentage must add up to 100");
+    }
+};
+
+export {
+    getTreeCarbonCapture,
+    estimateBiomeCarbonCapture
+};
