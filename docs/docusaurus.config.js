@@ -26,12 +26,18 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/IdentiTree/documentation',
           label: 'GitHub',
           position: 'right',
         },
+        {
+          to: "api/",
+          activeBasePath: "api",
+          label: "API",
+          position: "left",
+        }
       ],
     },
     footer: {
@@ -105,5 +111,21 @@ module.exports = {
         },
       },
     ],
-  ],
+    [
+      'redocusaurus',
+      {
+        debug: Boolean(process.env.DEBUG || process.env.CI),
+        specs: [
+          {
+            spec: 'openapi.yaml',
+            routePath: '/api/',
+          },
+        ],
+        theme: {
+          // primaryColor: '#1890ff',
+          redocOptions: { hideDownloadButton: false },
+        },
+      },
+    ],
+  ]
 };
