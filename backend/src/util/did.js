@@ -1,4 +1,5 @@
 const identity = require('@iota/identity-wasm/node');
+const { checkCredential } = require('@iota/identity-wasm/node');
 
 const createDID = async () => {
     const key = new identity.KeyPair(identity.KeyType.Ed25519);
@@ -17,5 +18,31 @@ const createDID = async () => {
     };
 };
 
+const CLIENT_CONFIG = {
+    network: "main",
+    node: "https://chrysalis-nodes.iota.org:443",
+}
 
-module.exports = { createDID };
+const authenticate = async (credential) => {
+
+
+    console.log("authenticate", credential)
+    // const result = await client.checkCredential(credential.toString());
+    try {
+        const result = await checkCredential(JSON.stringify(credential), CLIENT_CONFIG);
+        console.log("result", result)
+
+        console.log(`VC verification result: ${result.verified}`);
+
+        return {
+            result
+        };
+    } catch (error) {
+        console.log("error authenticate", error)
+
+    }
+
+};
+
+
+module.exports = { createDID, authenticate };
